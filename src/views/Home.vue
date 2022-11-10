@@ -1,7 +1,7 @@
 <template>
   <div v-for="post in postData" 
   :key="post.id" 
-  class="flex bg-white w-[650] shadow mx-auto mt-2">
+  class="flex bg-white w-[650px] shadow mx-auto mt-2">
     <div class="p-2 flex-shrink-0">
         <img class="shadow" height="250" width="250" :src="post.img" alt="img1">
     </div>
