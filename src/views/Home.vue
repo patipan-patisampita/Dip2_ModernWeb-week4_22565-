@@ -6,17 +6,23 @@
     <div class="ml-2 p-2">
       <div class="font-bold text-lg text-purple-600">กรุงเทพมหานคร</div>
       <div class="text-sm">
-        กรุงเทพมหานคร เป็นเมืองหลวงและนครที่มีประชากรมากที่สุดของประเทศไทย
-        เป็นศูนย์กลางการปกครอง การศึกษา การคมนาคมขนส่ง การเงินการธนาคาร
-        การพาณิชย์ การสื่อสาร และความเจริญของประเทศ
+       
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+import { onMounted } from '@vue/runtime-core';
+
 export default {
   name: "HomePage",
+  setup(){
+    onMounted(()=>{
+      axios.get("http://localhost:3000/posts").then((res)=>console.log(res))
+    })
+  }
 };
 </script>
 <style></style>
