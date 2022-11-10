@@ -2,25 +2,38 @@
   <div class="bg-white flex flex-col w-80 p-2 m-2 shadow space-y-2">
     <div>
       <label class="block" for="">เรื่อง</label>
-      <input class="border w-full" type="text" />
+      <input v-model="post.title" class="border w-full" type="text" />
     </div>
 
     <div>
       <label class="block" for="">ลิงค์ URL</label>
-      <input class="border w-full" type="text" />
+      <input v-model="post.img" class="border w-full" type="text" />
     </div>
 
     <div>
       <label class="block" for="">รายละเอียด</label>
-      <textarea class="border w-full" rows="5"></textarea>
+      <textarea v-model="post.body" class="border w-full" rows="5"></textarea>
     </div>
 
     <button class="bg-green-400 text-white py-2">บันทึก</button>
   </div>
+  {{ post }}
 </template>
 
 <script>
-export default {};
+import { ref } from '@vue/reactivity';
+export default {
+  nane:"AddPost",
+  setup(){
+    const post = ref({
+      title: "Test",
+      img:"Picture",
+      body:"details",
+    })
+
+    return {post}
+  }
+};
 </script>
 
 <style></style>
