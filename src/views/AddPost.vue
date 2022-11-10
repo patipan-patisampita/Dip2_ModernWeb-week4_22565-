@@ -15,23 +15,36 @@
       <textarea v-model="post.body" class="border w-full" rows="5"></textarea>
     </div>
 
-    <button class="bg-green-400 text-white py-2">บันทึก</button>
+    <button @click="savePost" class="bg-green-400 text-white py-2">บันทึก</button>
   </div>
   {{ post }}
 </template>
 
 <script>
 import { ref } from '@vue/reactivity';
+import axios from 'axios'
+import { useRoute,useRouter } from 'vue-router';
+
 export default {
   nane:"AddPost",
   setup(){
+    const route = useRoute()
+    const router = useRouter()
+
     const post = ref({
-      title: "Test",
-      img:"Picture",
-      body:"details",
+      title: "",
+      img:"",
+      body:"",
     })
 
-    return {post}
+    const savePost =()=>{
+      axios.post("http://localhost:3000/posts",post.value).then((res)=>{
+        // console.log(res.data)
+        router.push("/")
+      })
+    }
+
+    return {post,savePost}
   }
 };
 </script>
